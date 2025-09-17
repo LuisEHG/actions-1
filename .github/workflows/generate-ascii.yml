@@ -8,20 +8,11 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v5
-
-      - name: Install cowsay program
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y cowsay
-
-      - name: Execute cowsay CMD
-        run: cowsay -f dragon "Run for cover, I am a DRAGON... XD" >> luis.txt
-
-      - name: Test file contains 'luis'
-        run: grep -i "luis" luis.txt || echo "No se encontró 'luis' en el archivo"
-
-      - name: Read File
-        run: cat luis.txt
-
+            
       - name: List Repo Files
         run: ls -lrta
+        
+      - name: Executing shell script
+        run: ./ascii-script.sh
+
+    
