@@ -1,0 +1,14 @@
+name: Mi primer flujo de trabajo
+
+on: push
+
+jobs:
+    first_job:
+        runs-on: ubuntu-lastest
+        steps:
+        - name: Bienvenido
+          run: echo "Mi primer flujo en Github"
+        - name: Lista de Archivos
+          run: ls -lrt
+        - name: leer Archivos
+          run: cat README.md 
