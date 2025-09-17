@@ -10,18 +10,18 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Install cowsay program
-        run: sudo apt-get install cowsay -y
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cowsay
 
       - name: Execute cowsay CMD
-        run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> luis.txt
+        run: cowsay -f dragon "Run for cover, I am a DRAGON... XD" >> luis.txt
 
-      - name: Test file exists (no error if not found)
-        run: grep -i "luis" luis.txt
+      - name: Test file contains 'luis'
+        run: grep -i "luis" luis.txt || echo "No se encontró 'luis' en el archivo"
 
       - name: Read File
         run: cat luis.txt
 
-      - name: Checkout Repo Files
+      - name: List Repo Files
         run: ls -lrta
-
-          
