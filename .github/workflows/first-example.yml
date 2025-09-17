@@ -8,9 +8,16 @@ jobs:
         steps:
         - name: Checkout Repo
           uses: actions/checkout@v5
-        - name: Bienvenido
-          run: echo "Mi primer flujo en Github"
-        - name: Lista de Archivos
-          run: ls -lrt
-        - name: leer Archivos
-          run: cat README.md 
+        
+        - name: Lista y lectura de archivos
+          run: |
+            echo "Mi primer flujo en Github"
+            ls -lrta
+            cat README.md
+        - name: Generate ASCII Artwork
+          run: cowsay -f dragon "Run for cover, I am a DRAGON... XD" >> luis.txt
+
+      #  - name: Lista de Archivos
+       #   run: ls -lrt
+        #- name: leer Archivos
+         # run: cat README.md 
