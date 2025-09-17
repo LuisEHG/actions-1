@@ -1,21 +1,27 @@
-    name: Generate ASCII Artwork
-    on:
-        push
-    jobs:
-        ascii_job:
-            runs-on: ubuntu-latest
-            steps:
-            - name: Checkout Repo
-              uses: actions/checkout@v5
-            - name: Install cowsay program
-              run: sudo apt-get install cowsay -y
-            - name: Execute cowsay CMD
-              run: cowsay -f dragon "Run for cover, I am a DRAGON XD" >> luis.txt
-            - name: test file exits
-              run: grep -i "luis" luis.txt
-            - name: Read File
-              run: cat luis.txt
-            - name: Checkout Repo Files
-              run: ls -lrta
+name: Generate ASCII Artwork
+on:
+  push
+
+jobs:
+  ascii_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v5
+
+      - name: Install cowsay program
+        run: sudo apt-get install cowsay -y
+
+      - name: Execute cowsay CMD
+        run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> luis.txt
+
+      - name: Test file exists (no error if not found)
+        run: grep -i "luis" luis.txt
+
+      - name: Read File
+        run: cat luis.txt
+
+      - name: Checkout Repo Files
+        run: ls -lrta
 
           
