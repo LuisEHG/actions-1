@@ -1,0 +1,20 @@
+name: Configuracion Matrix
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    ##sirve para ejecutar un mismo job en múltiples combinaciones de variables 
+    ## (como sistemas operativos, versiones de lenguajes, dependencias, etc.) en paralelo.
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-20.04, windows-latest]
+        image: [hello-world, alpine]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Echo Docker Detalles
+        run: docker info
+
+      - name: Run Image on ${{ matrix.os }}
+        run: docker run ${{ matrix.image }}
